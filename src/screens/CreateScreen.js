@@ -5,14 +5,15 @@ import { Context } from '../context/BlogContext';
 const CreateScreen = ({ navigation }) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const { addBlogPost } = useContext(Context);
 
   return (
     <View>
       <Text style={styles.label}>Title</Text>
-      <TextInput style={styles.input} value={title} onChangeText={(text) => setTitle} />
+      <TextInput style={styles.input} value={title} onChangeText={text => setTitle(text)} />
       <Text style={styles.label}>Content</Text>
-      <TextInput style={styles.input} value={content} onChangeText={(text) => setContent} />
-      <Button title="Add Blog Post"/>
+      <TextInput style={styles.input} value={content} onChangeText={text => setContent(text)} />
+      <Button onPress={() => addBlogPost(title, content)} title="Add Blog Post"/>
     </View>
   );
 };
