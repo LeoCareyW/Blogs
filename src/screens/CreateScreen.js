@@ -10,10 +10,22 @@ const CreateScreen = ({ navigation }) => {
   return (
     <View>
       <Text style={styles.label}>Title</Text>
-      <TextInput style={styles.input} value={title} onChangeText={text => setTitle(text)} />
+      <TextInput
+        style={styles.input}
+        value={title}
+        onChangeText={text => setTitle(text)} />
       <Text style={styles.label}>Content</Text>
-      <TextInput style={styles.input} value={content} onChangeText={text => setContent(text)} />
-      <Button onPress={() => addBlogPost(title, content)} title="Add Blog Post"/>
+      <TextInput
+        style={styles.input}
+        value={content}
+        onChangeText={text => setContent(text)} />
+      <Button
+        onPress={() => { addBlogPost(title, content, () => {
+          navigation.navigate('Index');
+          })
+        }}
+        title="Add Blog Post"
+      />
     </View>
   );
 };
